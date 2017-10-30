@@ -1,5 +1,21 @@
-extends layout
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    |   
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    |   
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    |   
+    title Document
+  body
+    input#input(type="text")
+    button#send 发送
+    |   
+    #msg
 
-block content
-  h1= title
-  p Welcome to #{title}
+    script(type='text/javascript', src='https://cdn.bootcss.com/jquery/2.0.3/jquery.js')
+    script(type='text/javascript', src='https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js')
+    script(type='text/javascript', src='/javascripts/test.js')
+    
+  

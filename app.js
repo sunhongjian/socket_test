@@ -13,9 +13,19 @@ const logger = log4js.getLogger('app')
 const index = require('./routes/index')
 const users = require('./routes/users')
 
+let msgList = []
+const server = require('http').Server(app.callback()).listen(3002);
+var io = require('socket.io')(server);
+io.on('connection', function (socket) {
+  socket.emit('news', { code: '0', msgList: msgList });
+  socket.on('msg', function (data) {
+    msgList.push(data)
+    console.log(data)
+    socket.broadcast.emit('news', { info: data });
+  });
+});
 // error handler
 onerror(app)
-
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
